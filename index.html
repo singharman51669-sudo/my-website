@@ -3,26 +3,109 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hunter | Gaming & Tech Portfolio</title>
+  <title>Arman Singh (Handa) my brothers name kuldeep handa and gurdeep handa | Official Gaming & Dev Site</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="card">
-    <span class="badge">Gamer • Coder • Creator</span>
-    <h1>Hi, I'm Arman singh</h1>
-    <p>Free Fire, GTA 5 aur PC hardware lover. Abhi main HTML, CSS aur Python se coding seekh raha hoon.</p>
-    
-    <div class="links">
-      <a href="https://www.instagram.com/itz_armanx47/" target="_blank" class="btn ig">Instagram</a>
-    </div>
 
-    <button onclick="copyUID()" class="uid-btn">Copy Free Fire UID: 8180436307</button>
-  </div>
+  <!-- Top Navigation Bar -->
+  <nav class="navbar">
+    <div class="logo">arman<span>.DEV</span></div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#setup">PC Rig</a></li>
+      <li><a href="#videos">Videos</a></li>
+      <li><a href="#connect">Connect</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero" id="about">
+    <div class="hero-content">
+      <div class="avatar-ring">
+        <img src="https://api.dicebear.com/9.x/avataaars/svg?seed=Hunter&backgroundColor=0ea5e9" alt="Arman Avatar">
+      </div>
+      <div class="status-pill"><span class="dot"></span> Coding & Gaming Live</div>
+      <h1>Hi, I'm <span class="gradient-text">Arman Singh</span></h1>
+      <p class="subtitle">Gaming Creator (@Hunterzzff) • Aspiring CS Engineer • Python & Web Developer</p>
+      
+      <div class="hero-buttons">
+        <a href="https://www.youtube.com/@Hunterzzff" target="_blank" class="btn primary-btn">▶ Subscribe on YouTube</a>
+        <button onclick="copyUID()" class="btn secondary-btn" id="uidBtn">📋 FF UID: 8180436307</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Stats Bar -->
+  <section class="stats-container">
+    <div class="stat-card">
+      <h2>8th</h2>
+      <p>Grade Student</p>
+    </div>
+    <div class="stat-card">
+      <h2>Prime 6</h2>
+      <p>Free Fire Rank</p>
+    </div>
+    <div class="stat-card">
+      <h2>3+</h2>
+      <p>Tech Skills (HTML/CSS/Py)</p>
+    </div>
+  </section>
+
+  <!-- PC Specs & Games Grid -->
+  <section class="section" id="setup">
+    <h2 class="section-title">🖥️ My Hardware & Gaming Zone</h2>
+    <div class="cards-grid">
+      <div class="glass-card">
+        <h3>⚡ Current PC Rig</h3>
+        <ul class="spec-list">
+          <li><strong>CPU:</strong> Intel Core i5 (2nd Gen)</li>
+          <li><strong>GPU:</strong> GeForce GT 730 4GB</li>
+          <li><strong>RAM:</strong> 16GB DDR3</li>
+          <li><strong>Storage:</strong> 120GB OSCOO SSD + 300GB HDD</li>
+        </ul>
+      </div>
+
+      <div class="glass-card">
+        <h3>🎮 Games I Play</h3>
+        <div class="game-pills">
+          <span>Free Fire MAX (CS Rank)</span>
+          <span>Grand Theft Auto V</span>
+          <span>Minecraft</span>
+          <span>Forza Horizon</span>
+          <span>BeamNG.drive</span>
+          <span>Assetto Corsa</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Video / Showcase Section -->
+  <section class="section" id="videos">
+    <h2 class="section-title">🎬 Featured Channel</h2>
+    <div class="glass-card center-card">
+      <p>Mere gaming montages, Free Fire gameplay aur tech updates dekhne ke liye channel check karein:</p>
+      <div class="social-row">
+        <a href="https://www.youtube.com/@Hunterzzff" target="_blank" class="social-chip yt">YouTube: @Hunterzzff</a>
+        <a href="https://www.instagram.com/itz_armanx47
+    /" target="_blank" class="social-chip ig">Instagram: @itz_armanx47</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer / Connect -->
+  <footer id="connect">
+    <p>Designed & Coded by <strong>Arman Singh (handa)</strong> • Hosted Free on GitHub Pages</p>
+  </footer>
 
   <script>
     function copyUID() {
       navigator.clipboard.writeText("8180436307");
-      alert("Free Fire UID (8180436307) copy ho gaya hai!");
+      const btn = document.getElementById("uidBtn");
+      btn.innerText = "✅ Copied: 8180436307";
+      setTimeout(() => {
+        btn.innerText = "📋 FF UID: 8180436307";
+      }, 2000);
     }
   </script>
 </body>
