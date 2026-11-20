@@ -101,6 +101,7 @@ body {
 .hero-center h1 span {
   background: linear-gradient(90deg, #38bdf8, #a855f7);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -275,4 +276,23 @@ body {
 
 @media (max-width: 768px) {
   .nav-links, .divider { display: none; }
+}
+.get-app-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #22d3ee, #6366f1);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(34, 211, 238, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.get-app-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.45);
 }
