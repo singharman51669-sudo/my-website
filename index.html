@@ -3,123 +3,523 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Handa Studios | 3D Blender & VFX Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <title>HANDA | 3D Blender & VFX Studio</title>
+  <link rel="stylesheet" href="style.css?v=4" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#7c3aed" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-
-  <!-- Full-Screen Epic 3D VFX Hero Section -->
-  <div class="hero-wrapper">
-    
-    <!-- Navbar -->
-    <nav class="navbar">
-      <div class="logo">⚡ HANDA<span>STUDIOS</span></div>
-      <ul class="nav-links">
-        <li><a href="#showcase">3D Renders</a></li>
-        <li><a href="#workflow">VFX Pipeline</a></li>
-        <li><a href="#rig">Workstation</a></li>
-        <li><a href="#connect">Connect</a></li>
-      </ul>
-      <div class="nav-actions">
-        <a href="library.html" class="btn-glow">🎬 Open Video Library</a>
-        <a href="handa-studios.apk" download="HandaStudios.apk" class="get-app-btn">⬇ Get App</a>
-      </div>
-    </nav>
-
-    <!-- Main Hero Content -->
-    <header class="hero-center">
-      <div class="badge-pill">⚡ 3D BLENDER ARTIST • VFX CREATOR • CS ASPIRANT</div>
-      <h1>Arman Singh Handa<br><span>3D Worlds & Cinematic VFX</span></h1>
-      <p>Creating mythological 3D animations, character simulations, and visual effects in Blender. Explore all my original renders inside the Video Library.</p>
-      
-      <div class="hero-buttons">
-        <a href="library.html" class="btn-primary">▶ Open 3D Video Library</a>
-        <a href="#showcase" class="btn-secondary">✨ Explore Featured Renders</a>
-      </div>
-
-      <!-- Clean Glass Stats Bar -->
-      <div class="stats-bar">
-        <div class="stat-box">
-          <h3>Blender 3D</h3>
-          <p>Animation & Modeling</p>
-        </div>
-        <div class="divider"></div>
-        <div class="stat-box">
-          <h3>Cycles & Eevee</h3>
-          <p>Cinematic VFX Rendering</p>
-        </div>
-        <div class="divider"></div>
-        <div class="stat-box">
-          <h3>Handa Studios</h3>
-          <p>Original Video Library</p>
-        </div>
-      </div>
-    </header>
+<!-- ULTRA-PRO STUDIO BOOT PRELOADER -->
+  <div class="studio-loader" id="studioLoader">
+    <div class="loader-inner">
+      <span class="loader-tag">HANDA OS // 3D VFX ENGINE v4.0</span>
+      <div class="loader-count" id="loaderCount">00%</div>
+      <div class="loader-bar"><div class="loader-bar-fill" id="loaderFill"></div></div>
+    </div>
   </div>
 
-  <!-- Featured Blender Renders & Studio Grid -->
-  <section class="bento-section" id="showcase">
-    <div class="section-head">
-      <span>3D ANIMATION & VFX STUDIO</span>
-      <h2>Featured Blender Projects & Pipeline</h2>
+  <!-- CUSTOM MAGNETIC STUDIO CURSOR -->
+  <div class="studio-cursor" id="studioCursor"></div>
+  <!-- 1. TOP FIXED EDITORIAL NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <a href="#" class="brand">HANDA</a>
+      <span class="nav-tagline">3D BLENDER & VFX STUDIO BY ARMAN SINGH HANDA</span>
+    </div>
+    <ul class="nav-center">
+      <li><a href="#scrollyStage">RENDERS ▾</a></li>
+      <li><a href="#workspaceTrigger">PIPELINE ▾</a></li>
+      <li><a href="library.html">VAULT</a></li>
+    </ul>
+    <div class="nav-right">
+      <button id="installAppBtn" class="theme-toggle-btn" onclick="installHandaApp()">[ 📲 GET APP ]</button>
+      <button id="sfxBtn" class="theme-toggle-btn" onclick="toggleSfx()">[ 🔊 SFX ]</button>
+      <button id="themeBtn" class="theme-toggle-btn" onclick="toggleTheme()">[ ☾ DARK ]</button>
+      <a href="library.html" class="btn-outline-sm">[ OPEN LIBRARY ]</a>
+    </div>
+  </nav>
+
+  <!-- 2. STICKY 3D SCROLLYTELLING TRACK (300vh Scroll Experience Like TIDY) -->
+  <div class="scrolly-track" id="scrollyStage">
+    <div class="scrolly-sticky">
+      
+      <!-- Sub-Header Technical Strip -->
+      <div class="sub-strip">
+        <span id="scrollProgressCode">001 // 004 — 00%</span>
+        <span>BLENDER 3D • CYCLES • PYTHON</span>
+        <span>PUNJAB, IN</span>
+      </div>
+
+      <!-- PHASE 1: HERO & 3D MORPHING RIBBON -->
+      <div class="phase-hero" id="phaseHero">
+        <div class="hero-top-grid">
+          <div class="hero-title-block">
+            <h1>YOUR STUDIO'S COMMAND<br>CENTER FOR 3D RENDERS<br>& CINEMATIC VFX BY ARMAN.</h1>
+            <p class="mono-sub">• 3D ANIMATION & VISUAL EFFECTS</p>
+          </div>
+          <div class="hero-desc-block">
+            <p>Explore mythological 3D scenes, volumetric lighting, and custom Blender simulations crafted from scratch by Arman Singh Handa.</p>
+          </div>
+        </div>
+
+        <!-- 3D Twisted Ribbon Wave (Morphs on Scroll) -->
+        <div class="ribbon-stage" id="ribbonStage">
+          <div class="ribbon-track" id="ribbonTrack"></div>
+          <div class="ribbon-ruler" id="ribbonRuler">
+            <span>00</span><span>10</span><span>20</span><span>30</span><span>40</span><span>50</span><span>60</span><span>70</span><span>80</span><span>90</span><span>100</span>
+          </div>
+        </div>
+
+        <div class="hero-bottom-cta" id="heroCta">
+          <p>Ready to experience the 3D renders and<br>explore the full Blender video vault?</p>
+          <a href="library.html" class="btn-pill-purple">OPEN VIDEO LIBRARY</a>
+        </div>
+      </div>
+
+      <!-- PHASE 2: 3D ISOMETRIC TABLET & FLOATING Z-DEPTH CARDS -->
+      <div class="phase-tablet" id="phaseTablet">
+        <div class="tablet-layout">
+          
+          <!-- Left Editorial Copy -->
+          <div class="tablet-copy" id="tabletCopy">
+            <span class="mono-label">002 // WORKSPACE</span>
+            <h2>CREATE SCENES, RENDER VFX,<br>EXPLORE VAULT.</h2>
+            <p>Move beyond basic edits. Inspect high-detail 3D environments, volumetric mountain fog, and custom Blender shaders inside an interactive studio library.</p>
+            
+            <div class="divider-line"></div>
+            <span class="mono-small">BUILT WITH BLENDER 3D & PYTHON</span>
+            <div class="cta-row">
+              <a href="library.html" class="btn-outline-dark">[ WATCH ALL VIDEOS ]</a>
+              <a href="#connect" class="btn-ghost-dark">YOUTUBE ↗</a>
+            </div>
+          </div>
+
+          <!-- Right 3D Tilted Isometric Tablet Board -->
+          <div class="tablet-3d-wrapper" id="tabletWrapper">
+            <div class="isometric-tablet" id="isoTablet">
+              
+              <div class="tablet-topbar">
+                <div class="tab-dots"><span></span><span></span><span></span></div>
+                <div class="tab-title">Handa Studios — 3D Render Vault</div>
+                <div class="tab-badge">CYCLES 4K</div>
+              </div>
+
+              <div class="tablet-canvas">
+                
+                <!-- Card 1 -->
+                <div class="t-card card-purple" id="card1" onclick="openHomePlayer('video1.mp4', 'Shiva 3D Cinematic VFX — Made by Arman')">
+                  <div class="t-card-top">
+                    <span class="t-tag">FEATURED RENDER</span>
+                    <span class="t-time">00:44</span>
+                  </div>
+                  <h4>Shiva 3D Cinematic VFX</h4>
+                  <p>Volumetric fog, glowing eyes & fire simulation in Blender.</p>
+                  <div class="t-card-footer">
+                    <span>Blender 3D</span>
+                    <strong>▶ Play Now</strong>
+                  </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="t-card card-pink" id="card2" onclick="openSpecModal('vfx')">
+                  <div class="t-card-top">
+                    <span class="t-tag">VFX PIPELINE</span>
+                    <span class="t-time">CYCLES</span>
+                  </div>
+                  <h4>Volumetric Lighting & Fog</h4>
+                  <p>Atmospheric mountain depth & procedural shader nodes.</p>
+                  <div class="t-card-footer">
+                    <span>Compositor</span>
+                    <strong>Inspect →</strong>
+                  </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="t-card card-blue" id="card3" onclick="openSpecModal('dev')">
+                  <div class="t-card-top">
+                    <span class="t-tag">DEV STACK</span>
+                    <span class="t-time">PYTHON</span>
+                  </div>
+                  <h4>Procedural 3D & Web Vault</h4>
+                  <p>Custom HTML/CSS cinema library built by Arman.</p>
+                  <div class="t-card-footer">
+                    <span>Handa Studios</span>
+                    <strong>View Stack →</strong>
+                  </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="t-card card-media" id="card4" onclick="window.location.href='library.html'">
+                  <img src="bg.png" alt="Shiva 3D Render" />
+                  <div class="media-caption">
+                    <span>FULL ARCHIVE</span>
+                    <strong>Open Complete Video Library →</strong>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Bottom Scroll Indicator -->
+      <div class="scroll-hint-bar">
+        <span id="scrollHintText">↓ SCROLL TO MORPH 3D RIBBON</span>
+        <div class="progress-line"><div class="progress-fill" id="progressFill"></div></div>
+      </div>
+
+    </div>
+    <div id="workspaceTrigger" style="position:absolute; top:55%; height:1px; width:1px;"></div>
+  </div>
+<!-- SECTION 3: BLENDER WIREFRAME VS FINAL VFX SLIDER (RONGTAY KHADE KARNE WALA FEATURE) -->
+  <section class="compare-section" id="breakdown">
+    <div class="compare-header">
+      <div>
+        <span class="mono-label">003 // RENDER BREAKDOWN</span>
+        <h2>FROM RAW 3D MESH TO<br>VOLUMETRIC CINEMA.</h2>
+      </div>
+      <p>Drag the studio slider left or right to inspect the raw Blender 3D wireframe geometry against the final volumetric render.</p>
     </div>
 
-    <div class="bento-grid">
-      
-      <!-- Card 1: Featured 3D Render -->
-      <div class="bento-card highlight-card">
-        <div class="card-icon">🔱</div>
-        <h3>Shiva 3D Cinematic VFX</h3>
-        <p class="card-sub">Mythological 3D animation featuring atmospheric fog, volumetric lighting, fire simulation, and glowing chakras.</p>
-        <div class="tags-row">
-          <span>Blender 3D</span>
-          <span>Volumetrics</span>
-          <span>VFX</span>
-        </div>
-        <a href="library.html" class="card-btn">Watch in Video Library →</a>
+    <div class="compare-box" id="compareBox">
+      <!-- Layer 1: Final Render -->
+      <img src="bg.png" alt="Final Shiva 3D VFX" class="compare-img" />
+      <span class="badge-right">FINAL CYCLES VFX // 4K</span>
+
+      <!-- Layer 2: Wireframe / Clay Viewport Overlay -->
+      <div class="compare-before" id="compareBefore">
+        <img src="bg.png" alt="Blender Wireframe" class="compare-img wireframe-filter" />
+        <div class="wireframe-grid"></div>
+        <span class="badge-left">BLENDER 3D MESH // CLAY + WIRE</span>
       </div>
 
-      <!-- Card 2: VFX & Dev Pipeline -->
-      <div class="bento-card" id="workflow">
-        <div class="card-icon">🎬</div>
-        <h3>3D & Creative Stack</h3>
-        <p class="card-sub">Tools & technologies I use to build 3D scenes and web apps:</p>
-        <ul class="spec-list">
-          <li><span>3D Suite</span> <strong>Blender (Modeling & VFX)</strong></li>
-          <li><span>Compositing</span> <strong>Color Grading & SFX</strong></li>
-          <li><span>Web Platform</span> <strong>Custom PS5-Style Library</strong></li>
-          <li><span>Programming</span> <strong>Python, HTML5 & CSS3</strong></li>
-        </ul>
+      <!-- Draggable Handle -->
+      <div class="compare-handle" id="compareHandle">
+        <div class="handle-circle">⇄</div>
       </div>
-
-      <!-- Card 3: Render Workstation -->
-      <div class="bento-card" id="rig">
-        <div class="card-icon">🖥️</div>
-        <h3>3D Render Workstation</h3>
-        <p class="card-sub">Hardware powering my Blender scenes and code:</p>
-        <ul class="spec-list">
-          <li><span>Processor</span> <strong>Intel Core i5 (2nd Gen)</strong></li>
-          <li><span>GPU</span> <strong>NVIDIA GeForce GT 730 4GB</strong></li>
-          <li><span>Memory</span> <strong>8GB DDR3 RAM</strong></li>
-          <li><span>Storage</span> <strong>120GB SSD + 300GB HDD</strong></li>
-        </ul>
-      </div>
-
     </div>
   </section>
-
-  <!-- Footer / Connect -->
-  <footer class="footer" id="connect">
-    <h2>Handa Studios By Arman</h2>
-    <p>Watch my latest Blender 3D animations and follow my creative journey</p>
-    <div class="social-links">
-      <a href="library.html" class="featured-link">🎬 Open 3D Video Library</a>
-      <a href="https://youtube.com" target="_blank">▶ YouTube (@comingsoon..)</a>
-      <a href="https://instagram.com" target="_blank">📸 Instagram (@itz_armanx47)</a>
+  <!-- 3. MINIMAL STUDIO FOOTER -->
+  <footer class="studio-footer" id="connect">
+    <div class="footer-inner">
+      <div class="brand">HANDA STUDIOS</div>
+      <div class="footer-links">
+        <a href="library.html">3D Video Library</a>
+        <a href="https://youtube.com" target="_blank">YouTube (@Hunterzzff)</a>
+        <a href="https://instagram.com" target="_blank">Instagram (@itz_armanx47)</a>
+      </div>
+      <span class="mono-small">© 2026 ARMAN SINGH HANDA</span>
     </div>
-    <p class="copyright">© 2026 Handa Studios By Arman. All 3D Renders & Code by Arman Singh Handa.</p>
   </footer>
+
+  <!-- 4. CENTER SCREEN CINEMA & SPECS POPUP MODAL -->
+  <div class="studio-modal" id="studioModal" onclick="if(event.target===this) closeStudioModal()">
+    <div class="studio-modal-box">
+      <div class="modal-bar">
+        <span id="modalHeading">HANDA STUDIOS // PREVIEW</span>
+        <button onclick="closeStudioModal()">✕ CLOSE</button>
+      </div>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <!-- 5. REAL-TIME 3D SCROLLYTELLING ENGINE -->
+  <script>
+    // G. Installable Web App (PWA) Logic
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+    });
+
+    function installHandaApp() {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then(() => {
+          deferredPrompt = null;
+        });
+      } else {
+        modalHeading.textContent = 'INSTALL HANDA STUDIOS APP // MOBILE & PC';
+        modalBody.innerHTML = `
+          <div class="spec-popup">
+            <h3>📲 Install Handa 3D Studio App</h3>
+            <ul>
+              <li><span>Android (Chrome)</span><strong>Menu (⋮) → "Add to Home Screen" / "Install App"</strong></li>
+              <li><span>iPhone (Safari)</span><strong>Share Icon (↑) → "Add to Home Screen"</strong></li>
+              <li><span>Windows PC</span><strong>Address Bar ke right mein Install Icon (⊕) dabayein</strong></li>
+            </ul>
+            <button onclick="closeStudioModal()" class="modal-cta" style="border:none; cursor:pointer;">Got It ✓</button>
+          </div>`;
+        studioModal.classList.add('active');
+      }
+    }
+    // =========================================================
+    // F. ULTRA-PRO PRELOADER, WEB AUDIO SFX, CURSOR & SLIDER
+    // =========================================================
+    
+    // 1. Studio Boot Preloader (0% -> 100%)
+    let loadPct = 0;
+    const loaderEl = document.getElementById('studioLoader');
+    const loaderCount = document.getElementById('loaderCount');
+    const loaderFill = document.getElementById('loaderFill');
+
+    const bootInterval = setInterval(() => {
+      loadPct += Math.floor(Math.random() * 18) + 12;
+      if (loadPct >= 100) {
+        loadPct = 100;
+        clearInterval(bootInterval);
+        setTimeout(() => loaderEl.classList.add('done'), 220);
+      }
+      loaderCount.textContent = (loadPct < 10 ? '0' + loadPct : loadPct) + '%';
+      loaderFill.style.width = loadPct + '%';
+    }, 65);
+
+    // 2. Web Audio API Sci-Fi UI Sound Synthesizer (No MP3 needed!)
+    let sfxEnabled = true;
+    const sfxBtn = document.getElementById('sfxBtn');
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+    function playStudioClick(freq = 620, duration = 0.05) {
+      if (!sfxEnabled) return;
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(140, audioCtx.currentTime + duration);
+      gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + duration);
+    }
+
+    function toggleSfx() {
+      sfxEnabled = !sfxEnabled;
+      sfxBtn.textContent = sfxEnabled ? '[ 🔊 SFX ]' : '[ 🔇 MUTE ]';
+      if (sfxEnabled) playStudioClick(880, 0.08);
+    }
+
+    document.querySelectorAll('a, button, .t-card').forEach(el => {
+      el.addEventListener('mouseenter', () => playStudioClick(520, 0.035));
+      el.addEventListener('click', () => playStudioClick(840, 0.07));
+    });
+
+    // 3. Custom Magnetic Studio Cursor
+    const cursor = document.getElementById('studioCursor');
+    window.addEventListener('mousemove', (e) => {
+      cursor.style.transform = `translate3d(${e.clientX - 14}px, ${e.clientY - 14}px, 0)`;
+    });
+
+    // 4. Interactive Blender Wireframe vs Final VFX Slider
+    const compareBox = document.getElementById('compareBox');
+    const compareBefore = document.getElementById('compareBefore');
+    const compareHandle = document.getElementById('compareHandle');
+
+    function moveCompare(clientX) {
+      const rect = compareBox.getBoundingClientRect();
+      let pos = ((clientX - rect.left) / rect.width) * 100;
+      pos = clamp(pos, 4, 96);
+      compareBefore.style.width = pos + '%';
+      compareHandle.style.left = pos + '%';
+    }
+
+    compareBox.addEventListener('mousemove', (e) => moveCompare(e.clientX));
+    compareBox.addEventListener('touchmove', (e) => moveCompare(e.touches[0].clientX));
+    // A. Dark / Light Mode Toggle
+    const themeBtn = document.getElementById('themeBtn');
+    if (localStorage.getItem('handa-theme') === 'dark') {
+      document.body.classList.add('dark-mode');
+      themeBtn.textContent = '[ ☀ LIGHT ]';
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+      const isDark = document.body.classList.contains('dark-mode');
+      themeBtn.textContent = isDark ? '[ ☀ LIGHT ]' : '[ ☾ DARK ]';
+      localStorage.setItem('handa-theme', isDark ? 'dark' : 'light');
+    }
+
+    // B. Generate 42 Colorful 3D Ribbon Slices
+    const track = document.getElementById('ribbonTrack');
+    const colors = [
+      '#5b6cf9', '#735cf6', '#9b51e0', '#c048c8',
+      '#e04f9a', '#f26478', '#f58268', '#d9538f',
+      '#8f5cf6', '#4f7df9'
+    ];
+    const totalSlices = 42;
+
+    for (let i = 0; i < totalSlices; i++) {
+      const slice = document.createElement('div');
+      slice.className = 'ribbon-slice';
+      const color = colors[i % colors.length];
+      slice.style.background = `linear-gradient(180deg, ${color}, #2a2440)`;
+      track.appendChild(slice);
+    }
+
+    const slices = document.querySelectorAll('.ribbon-slice');
+    let mouseX = 0;
+    let scrollProgress = 0;
+
+    // C. Continuous Scroll-Driven 3D Morphing Engine (0% -> 100%)
+    const scrollyStage = document.getElementById('scrollyStage');
+    const phaseHero = document.getElementById('phaseHero');
+    const phaseTablet = document.getElementById('phaseTablet');
+    const isoTablet = document.getElementById('isoTablet');
+    const tabletCopy = document.getElementById('tabletCopy');
+    const progressFill = document.getElementById('progressFill');
+    const progressCode = document.getElementById('scrollProgressCode');
+    const scrollHintText = document.getElementById('scrollHintText');
+
+    const cards = [
+      document.getElementById('card1'),
+      document.getElementById('card2'),
+      document.getElementById('card3'),
+      document.getElementById('card4')
+    ];
+
+    function clamp(val, min, max) {
+      return Math.min(Math.max(val, min), max);
+    }
+
+    function updateScrollytelling() {
+      const rect = scrollyStage.getBoundingClientRect();
+      const maxScroll = scrollyStage.offsetHeight - window.innerHeight;
+      const scrolled = clamp(-rect.top, 0, maxScroll);
+      scrollProgress = maxScroll > 0 ? scrolled / maxScroll : 0;
+
+      // Update HUD Progress Bar & Percentage
+      const pct = Math.round(scrollProgress * 100);
+      progressFill.style.width = `${pct}%`;
+      progressCode.textContent = `001 // 004 — ${pct < 10 ? '0' + pct : pct}%`;
+
+      // 1. Hero & Ribbon Morph (0.0 -> 0.45)
+      const heroFade = clamp(1 - scrollProgress * 2.4, 0, 1);
+      const ribbonFlatten = clamp(scrollProgress * 2.2, 0, 1);
+
+      phaseHero.style.opacity = heroFade;
+      phaseHero.style.transform = `translateY(${-scrollProgress * 110}px) scale(${1 - scrollProgress * 0.12})`;
+      phaseHero.style.pointerEvents = heroFade < 0.15 ? 'none' : 'auto';
+
+      slices.forEach((slice, i) => {
+        const p = i / totalSlices;
+        const wave = Math.sin(p * Math.PI * 2.4 + mouseX * 1.5 + scrollProgress * 4) * (52 * (1 - ribbonFlatten * 0.85));
+        const y = Math.cos(p * Math.PI * 2.2 + mouseX) * (28 * (1 - ribbonFlatten));
+        const scaleX = 1 + ribbonFlatten * 1.4;
+        slice.style.transform = `translateY(${y}px) rotateX(${wave}deg) rotateY(${wave * 0.6}deg) scaleX(${scaleX})`;
+      });
+
+      // 2. Tablet Entrance & 3D Rotation (0.25 -> 0.70)
+      const tabProg = clamp((scrollProgress - 0.22) / 0.45, 0, 1);
+      phaseTablet.style.opacity = tabProg;
+      phaseTablet.style.pointerEvents = tabProg < 0.2 ? 'none' : 'auto';
+
+      tabletCopy.style.opacity = clamp((scrollProgress - 0.30) / 0.35, 0, 1);
+      tabletCopy.style.transform = `translateY(${(1 - tabProg) * 40}px)`;
+
+      // Tablet tilts smoothly from steep angle into isometric hero angle
+      const rotX = 36 - tabProg * 18;
+      const rotY = -32 + tabProg * 14;
+      const rotZ = 16 - tabProg * 8;
+      const tabScale = 0.82 + tabProg * 0.18;
+      isoTablet.style.transform = `perspective(1300px) rotateX(${rotX}deg) rotateY(${rotY}deg) rotateZ(${rotZ}deg) scale(${tabScale})`;
+
+      // 3. Staggered 3D Cards Flying In From Top (0.45 -> 0.95)
+      cards.forEach((card, idx) => {
+        const start = 0.44 + idx * 0.10;
+        const cardProg = clamp((scrollProgress - start) / 0.22, 0, 1);
+        // Smooth ease-out curve
+        const ease = 1 - Math.pow(1 - cardProg, 3);
+
+        const dropY = (1 - ease) * -170;
+        const dropZ = (1 - ease) * 220;
+        const tiltX = (1 - ease) * 32;
+        const cardScale = 1.15 - ease * 0.15;
+
+        card.style.opacity = clamp(cardProg * 1.6, 0, 1);
+        card.style.transform = `translate3d(0, ${dropY}px, ${dropZ}px) rotateX(${tiltX}deg) scale(${cardScale})`;
+      });
+
+      if (scrollProgress > 0.85) {
+        scrollHintText.textContent = '✓ WORKSPACE LOCKED — CLICK ANY CARD TO INSPECT';
+      } else if (scrollProgress > 0.3) {
+        scrollHintText.textContent = '↓ KEEP SCROLLING TO DROP 3D CARDS';
+      } else {
+        scrollHintText.textContent = '↓ SCROLL TO MORPH 3D RIBBON';
+      }
+    }
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+      if (scrollProgress < 0.45) {
+        updateScrollytelling();
+      }
+      window.addEventListener('touchmove', (e) => {
+      if (e.touches.length > 0) {
+        mouseX = (e.touches[0].clientX / window.innerWidth - 0.5) * 2;
+        if (scrollProgress < 0.45) updateScrollytelling();
+      }
+    }, { passive: true });
+    });
+
+    window.addEventListener('scroll', updateScrollytelling, { passive: true });
+    updateScrollytelling();
+
+    // D. Center Screen Video & Specs Modal Functions
+    const studioModal = document.getElementById('studioModal');
+    const modalHeading = document.getElementById('modalHeading');
+    const modalBody = document.getElementById('modalBody');
+
+    function openHomePlayer(videoSrc, title) {
+      modalHeading.textContent = title;
+      modalBody.innerHTML = `<video src="${videoSrc}" controls autoplay style="width:100%; max-height:70vh; display:block; background:#000;"></video>`;
+      studioModal.classList.add('active');
+    }
+
+    function openSpecModal(type) {
+      if (type === 'vfx') {
+        modalHeading.textContent = 'VFX PIPELINE // BLENDER 3D BREAKDOWN';
+        modalBody.innerHTML = `
+          <div class="spec-popup">
+            <h3>🔱 Shiva 3D Scene Architecture</h3>
+            <ul>
+              <li><span>3D Software</span><strong>Blender 3D (Modeling & Rigging)</strong></li>
+              <li><span>Lighting & Fog</span><strong>Principled Volume + Mist Pass</strong></li>
+              <li><span>Fire & Energy</span><strong>Procedural Shader Nodes & Glow</strong></li>
+              <li><span>Post-Processing</span><strong>Blender Compositor & Color Grade</strong></li>
+            </ul>
+            <a href="library.html" class="modal-cta">Watch Full Render in Vault →</a>
+          </div>`;
+      } else {
+        modalHeading.textContent = 'WORKSTATION & CODE STACK // ARMAN';
+        modalBody.innerHTML = `
+          <div class="spec-popup">
+            <h3>⚡ Hardware & Engineering Stack</h3>
+            <ul>
+              <li><span>Processor & GPU</span><strong>Intel Core i5 + NVIDIA GT 730 4GB</strong></li>
+              <li><span>Memory & Storage</span><strong>8GB DDR3 RAM + 120GB OSCOO SSD + HDD</strong></li>
+              <li><span>Web Architecture</span><strong>HTML5, CSS3 3D Transforms & JS</strong></li>
+              <li><span>Programming</span><strong>Python Scripting & Automation</strong></li>
+            </ul>
+            <a href="library.html" class="modal-cta">Explore All Projects →</a>
+          </div>`;
+      }
+      studioModal.classList.add('active');
+    }
+
+    function closeStudioModal() {
+      modalBody.innerHTML = '';
+      studioModal.classList.remove('active');
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeStudioModal();
+    });
+  </script>
 
 </body>
 </html>
