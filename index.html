@@ -4,13 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HANDA | 3D Blender & VFX Studio</title>
-  <link rel="stylesheet" href="style.css?v=4" />
+  <link rel="stylesheet" href="style.css?v=5" />
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#7c3aed" />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<!-- ULTRA-PRO STUDIO BOOT PRELOADER -->
+
+  <!-- ULTRA-PRO STUDIO BOOT PRELOADER -->
   <div class="studio-loader" id="studioLoader">
     <div class="loader-inner">
       <span class="loader-tag">HANDA OS // 3D VFX ENGINE v4.0</span>
@@ -21,6 +22,7 @@
 
   <!-- CUSTOM MAGNETIC STUDIO CURSOR -->
   <div class="studio-cursor" id="studioCursor"></div>
+
   <!-- 1. TOP FIXED EDITORIAL NAVBAR -->
   <nav class="navbar">
     <div class="nav-left">
@@ -40,10 +42,10 @@
     </div>
   </nav>
 
-  <!-- 2. STICKY 3D SCROLLYTELLING TRACK (300vh Scroll Experience Like TIDY) -->
+  <!-- 2. STICKY 3D SCROLLYTELLING TRACK (320vh) -->
   <div class="scrolly-track" id="scrollyStage">
     <div class="scrolly-sticky">
-      
+
       <!-- Sub-Header Technical Strip -->
       <div class="sub-strip">
         <span id="scrollProgressCode">001 // 004 — 00%</span>
@@ -55,7 +57,7 @@
       <div class="phase-hero" id="phaseHero">
         <div class="hero-top-grid">
           <div class="hero-title-block">
-            <h1>YOUR STUDIO'S COMMAND<br>CENTER FOR 3D RENDERS<br>& CINEMATIC VFX BY ARMAN.</h1>
+            <h1>YOUR STUDIO'S COMMAND<br>CENTER FOR 3D RENDERS<br>& CINEMATIC VFX.</h1>
             <p class="mono-sub">• 3D ANIMATION & VISUAL EFFECTS</p>
           </div>
           <div class="hero-desc-block">
@@ -80,13 +82,13 @@
       <!-- PHASE 2: 3D ISOMETRIC TABLET & FLOATING Z-DEPTH CARDS -->
       <div class="phase-tablet" id="phaseTablet">
         <div class="tablet-layout">
-          
+
           <!-- Left Editorial Copy -->
           <div class="tablet-copy" id="tabletCopy">
             <span class="mono-label">002 // WORKSPACE</span>
             <h2>CREATE SCENES, RENDER VFX,<br>EXPLORE VAULT.</h2>
             <p>Move beyond basic edits. Inspect high-detail 3D environments, volumetric mountain fog, and custom Blender shaders inside an interactive studio library.</p>
-            
+
             <div class="divider-line"></div>
             <span class="mono-small">BUILT WITH BLENDER 3D & PYTHON</span>
             <div class="cta-row">
@@ -98,7 +100,7 @@
           <!-- Right 3D Tilted Isometric Tablet Board -->
           <div class="tablet-3d-wrapper" id="tabletWrapper">
             <div class="isometric-tablet" id="isoTablet">
-              
+
               <div class="tablet-topbar">
                 <div class="tab-dots"><span></span><span></span><span></span></div>
                 <div class="tab-title">Handa Studios — 3D Render Vault</div>
@@ -106,7 +108,7 @@
               </div>
 
               <div class="tablet-canvas">
-                
+
                 <!-- Card 1 -->
                 <div class="t-card card-purple" id="card1" onclick="openHomePlayer('video1.mp4', 'Shiva 3D Cinematic VFX — Made by Arman')">
                   <div class="t-card-top">
@@ -174,35 +176,34 @@
     </div>
     <div id="workspaceTrigger" style="position:absolute; top:55%; height:1px; width:1px;"></div>
   </div>
-<!-- SECTION 3: BLENDER WIREFRAME VS FINAL VFX SLIDER (RONGTAY KHADE KARNE WALA FEATURE) -->
+
+  <!-- 3. BLENDER WIREFRAME VS FINAL VFX BEFORE/AFTER SLIDER -->
   <section class="compare-section" id="breakdown">
     <div class="compare-header">
       <div>
         <span class="mono-label">003 // RENDER BREAKDOWN</span>
         <h2>FROM RAW 3D MESH TO<br>VOLUMETRIC CINEMA.</h2>
       </div>
-      <p>Drag the studio slider left or right to inspect the raw Blender 3D wireframe geometry against the final volumetric render.</p>
+      <p>Drag or move across the studio slider to inspect the raw Blender 3D wireframe geometry against the final volumetric render.</p>
     </div>
 
     <div class="compare-box" id="compareBox">
-      <!-- Layer 1: Final Render -->
       <img src="bg.png" alt="Final Shiva 3D VFX" class="compare-img" />
       <span class="badge-right">FINAL CYCLES VFX // 4K</span>
 
-      <!-- Layer 2: Wireframe / Clay Viewport Overlay -->
       <div class="compare-before" id="compareBefore">
         <img src="bg.png" alt="Blender Wireframe" class="compare-img wireframe-filter" />
         <div class="wireframe-grid"></div>
         <span class="badge-left">BLENDER 3D MESH // CLAY + WIRE</span>
       </div>
 
-      <!-- Draggable Handle -->
       <div class="compare-handle" id="compareHandle">
         <div class="handle-circle">⇄</div>
       </div>
     </div>
   </section>
-  <!-- 3. MINIMAL STUDIO FOOTER -->
+
+  <!-- 4. MINIMAL STUDIO FOOTER -->
   <footer class="studio-footer" id="connect">
     <div class="footer-inner">
       <div class="brand">HANDA STUDIOS</div>
@@ -215,7 +216,7 @@
     </div>
   </footer>
 
-  <!-- 4. CENTER SCREEN CINEMA & SPECS POPUP MODAL -->
+  <!-- 5. CENTER SCREEN CINEMA & SPECS POPUP MODAL -->
   <div class="studio-modal" id="studioModal" onclick="if(event.target===this) closeStudioModal()">
     <div class="studio-modal-box">
       <div class="modal-bar">
@@ -226,107 +227,8 @@
     </div>
   </div>
 
-  <!-- 5. REAL-TIME 3D SCROLLYTELLING ENGINE -->
+  <!-- 6. ALL-IN-ONE INTERACTIVE ENGINE -->
   <script>
-    // G. Installable Web App (PWA) Logic
-    let deferredPrompt;
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-    });
- // G. Direct APK Download Logic for [ 📲 GET APP ] Button
-// G. Direct APK Download Logic for [ 📲 GET APP ] Button
-    function installHandaApp() {
-      const apkUrl = 'handa-studios.apk'; // Agar Google Drive/Release link ho toh yahan paste karein
-      const apkVersion = 'v1.0 • Android APK';
-
-      modalHeading.textContent = 'HANDA STUDIOS BY ARMAN // ANDROID APK';
-      modalBody.innerHTML = `
-        <div class="spec-popup">
-          <h3>📲 Download Handa Studios App</h3>
-          <ul>
-            <li><span>App Name</span><strong>Handa Studios By arman</strong></li>
-            <li><span>Package Format</span><strong>${apkVersion}</strong></li>
-            <li><span>Install Note</span><strong>Download ke baad "Install anyway" / "Allow from this source" dabayein</strong></li>
-          </ul>
-          <a href="${apkUrl}" download="Handa-Studios-By-Arman.apk" class="modal-cta">⬇ Download APK Now</a>
-        </div>`;
-      studioModal.classList.add('active');
-    }
-    // =========================================================
-    // F. ULTRA-PRO PRELOADER, WEB AUDIO SFX, CURSOR & SLIDER
-    // =========================================================
-    
-    // 1. Studio Boot Preloader (0% -> 100%)
-    let loadPct = 0;
-    const loaderEl = document.getElementById('studioLoader');
-    const loaderCount = document.getElementById('loaderCount');
-    const loaderFill = document.getElementById('loaderFill');
-
-    const bootInterval = setInterval(() => {
-      loadPct += Math.floor(Math.random() * 18) + 12;
-      if (loadPct >= 100) {
-        loadPct = 100;
-        clearInterval(bootInterval);
-        setTimeout(() => loaderEl.classList.add('done'), 220);
-      }
-      loaderCount.textContent = (loadPct < 10 ? '0' + loadPct : loadPct) + '%';
-      loaderFill.style.width = loadPct + '%';
-    }, 65);
-
-    // 2. Web Audio API Sci-Fi UI Sound Synthesizer (No MP3 needed!)
-    let sfxEnabled = true;
-    const sfxBtn = document.getElementById('sfxBtn');
-    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-
-    function playStudioClick(freq = 620, duration = 0.05) {
-      if (!sfxEnabled) return;
-      if (audioCtx.state === 'suspended') audioCtx.resume();
-      const osc = audioCtx.createOscillator();
-      const gain = audioCtx.createGain();
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(140, audioCtx.currentTime + duration);
-      gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
-      osc.connect(gain);
-      gain.connect(audioCtx.destination);
-      osc.start();
-      osc.stop(audioCtx.currentTime + duration);
-    }
-
-    function toggleSfx() {
-      sfxEnabled = !sfxEnabled;
-      sfxBtn.textContent = sfxEnabled ? '[ 🔊 SFX ]' : '[ 🔇 MUTE ]';
-      if (sfxEnabled) playStudioClick(880, 0.08);
-    }
-
-    document.querySelectorAll('a, button, .t-card').forEach(el => {
-      el.addEventListener('mouseenter', () => playStudioClick(520, 0.035));
-      el.addEventListener('click', () => playStudioClick(840, 0.07));
-    });
-
-    // 3. Custom Magnetic Studio Cursor
-    const cursor = document.getElementById('studioCursor');
-    window.addEventListener('mousemove', (e) => {
-      cursor.style.transform = `translate3d(${e.clientX - 14}px, ${e.clientY - 14}px, 0)`;
-    });
-
-    // 4. Interactive Blender Wireframe vs Final VFX Slider
-    const compareBox = document.getElementById('compareBox');
-    const compareBefore = document.getElementById('compareBefore');
-    const compareHandle = document.getElementById('compareHandle');
-
-    function moveCompare(clientX) {
-      const rect = compareBox.getBoundingClientRect();
-      let pos = ((clientX - rect.left) / rect.width) * 100;
-      pos = clamp(pos, 4, 96);
-      compareBefore.style.width = pos + '%';
-      compareHandle.style.left = pos + '%';
-    }
-
-    compareBox.addEventListener('mousemove', (e) => moveCompare(e.clientX));
-    compareBox.addEventListener('touchmove', (e) => moveCompare(e.touches[0].clientX));
     // A. Dark / Light Mode Toggle
     const themeBtn = document.getElementById('themeBtn');
     if (localStorage.getItem('handa-theme') === 'dark') {
@@ -362,7 +264,7 @@
     let mouseX = 0;
     let scrollProgress = 0;
 
-    // C. Continuous Scroll-Driven 3D Morphing Engine (0% -> 100%)
+    // C. Continuous Scroll-Driven 3D Morphing Engine
     const scrollyStage = document.getElementById('scrollyStage');
     const phaseHero = document.getElementById('phaseHero');
     const phaseTablet = document.getElementById('phaseTablet');
@@ -389,12 +291,10 @@
       const scrolled = clamp(-rect.top, 0, maxScroll);
       scrollProgress = maxScroll > 0 ? scrolled / maxScroll : 0;
 
-      // Update HUD Progress Bar & Percentage
       const pct = Math.round(scrollProgress * 100);
       progressFill.style.width = `${pct}%`;
       progressCode.textContent = `001 // 004 — ${pct < 10 ? '0' + pct : pct}%`;
 
-      // 1. Hero & Ribbon Morph (0.0 -> 0.45)
       const heroFade = clamp(1 - scrollProgress * 2.4, 0, 1);
       const ribbonFlatten = clamp(scrollProgress * 2.2, 0, 1);
 
@@ -410,7 +310,6 @@
         slice.style.transform = `translateY(${y}px) rotateX(${wave}deg) rotateY(${wave * 0.6}deg) scaleX(${scaleX})`;
       });
 
-      // 2. Tablet Entrance & 3D Rotation (0.25 -> 0.70)
       const tabProg = clamp((scrollProgress - 0.22) / 0.45, 0, 1);
       phaseTablet.style.opacity = tabProg;
       phaseTablet.style.pointerEvents = tabProg < 0.2 ? 'none' : 'auto';
@@ -418,18 +317,15 @@
       tabletCopy.style.opacity = clamp((scrollProgress - 0.30) / 0.35, 0, 1);
       tabletCopy.style.transform = `translateY(${(1 - tabProg) * 40}px)`;
 
-      // Tablet tilts smoothly from steep angle into isometric hero angle
       const rotX = 36 - tabProg * 18;
       const rotY = -32 + tabProg * 14;
       const rotZ = 16 - tabProg * 8;
       const tabScale = 0.82 + tabProg * 0.18;
       isoTablet.style.transform = `perspective(1300px) rotateX(${rotX}deg) rotateY(${rotY}deg) rotateZ(${rotZ}deg) scale(${tabScale})`;
 
-      // 3. Staggered 3D Cards Flying In From Top (0.45 -> 0.95)
       cards.forEach((card, idx) => {
         const start = 0.44 + idx * 0.10;
         const cardProg = clamp((scrollProgress - start) / 0.22, 0, 1);
-        // Smooth ease-out curve
         const ease = 1 - Math.pow(1 - cardProg, 3);
 
         const dropY = (1 - ease) * -170;
@@ -452,16 +348,15 @@
 
     window.addEventListener('mousemove', (e) => {
       mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
-      if (scrollProgress < 0.45) {
-        updateScrollytelling();
-      }
-      window.addEventListener('touchmove', (e) => {
+      if (scrollProgress < 0.45) updateScrollytelling();
+    });
+
+    window.addEventListener('touchmove', (e) => {
       if (e.touches.length > 0) {
         mouseX = (e.touches[0].clientX / window.innerWidth - 0.5) * 2;
         if (scrollProgress < 0.45) updateScrollytelling();
       }
     }, { passive: true });
-    });
 
     window.addEventListener('scroll', updateScrollytelling, { passive: true });
     updateScrollytelling();
@@ -516,6 +411,94 @@
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') closeStudioModal();
     });
+
+    // E. Studio Boot Preloader
+    let loadPct = 0;
+    const loaderEl = document.getElementById('studioLoader');
+    const loaderCount = document.getElementById('loaderCount');
+    const loaderFill = document.getElementById('loaderFill');
+
+    const bootInterval = setInterval(() => {
+      loadPct += Math.floor(Math.random() * 18) + 12;
+      if (loadPct >= 100) {
+        loadPct = 100;
+        clearInterval(bootInterval);
+        setTimeout(() => loaderEl.classList.add('done'), 220);
+      }
+      loaderCount.textContent = (loadPct < 10 ? '0' + loadPct : loadPct) + '%';
+      loaderFill.style.width = loadPct + '%';
+    }, 65);
+
+    // F. Web Audio Sci-Fi Sound Engine
+    let sfxEnabled = true;
+    const sfxBtn = document.getElementById('sfxBtn');
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+    function playStudioClick(freq = 620, duration = 0.05) {
+      if (!sfxEnabled) return;
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(140, audioCtx.currentTime + duration);
+      gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + duration);
+    }
+
+    function toggleSfx() {
+      sfxEnabled = !sfxEnabled;
+      sfxBtn.textContent = sfxEnabled ? '[ 🔊 SFX ]' : '[ 🔇 MUTE ]';
+      if (sfxEnabled) playStudioClick(880, 0.08);
+    }
+
+    document.querySelectorAll('a, button, .t-card').forEach(el => {
+      el.addEventListener('mouseenter', () => playStudioClick(520, 0.035));
+      el.addEventListener('click', () => playStudioClick(840, 0.07));
+    });
+
+    // G. Custom Magnetic Studio Cursor
+    const cursor = document.getElementById('studioCursor');
+    window.addEventListener('mousemove', (e) => {
+      cursor.style.transform = `translate3d(${e.clientX - 14}px, ${e.clientY - 14}px, 0)`;
+    });
+
+    // H. Blender Wireframe vs Final VFX Slider
+    const compareBox = document.getElementById('compareBox');
+    const compareBefore = document.getElementById('compareBefore');
+    const compareHandle = document.getElementById('compareHandle');
+
+    function moveCompare(clientX) {
+      const rect = compareBox.getBoundingClientRect();
+      let pos = ((clientX - rect.left) / rect.width) * 100;
+      pos = clamp(pos, 4, 96);
+      compareBefore.style.width = pos + '%';
+      compareHandle.style.left = pos + '%';
+    }
+
+    compareBox.addEventListener('mousemove', (e) => moveCompare(e.clientX));
+    compareBox.addEventListener('touchmove', (e) => moveCompare(e.touches[0].clientX));
+
+    // I. Direct APK Download for [ 📲 GET APP ]
+    function installHandaApp() {
+      const apkUrl = 'handa-studios.apk';
+      modalHeading.textContent = 'HANDA STUDIOS BY ARMAN // ANDROID APK';
+      modalBody.innerHTML = `
+        <div class="spec-popup">
+          <h3>📲 Download Handa Studios App</h3>
+          <ul>
+            <li><span>App Name</span><strong>Handa Studios By arman</strong></li>
+            <li><span>Package Format</span><strong>v1.0 • Android APK</strong></li>
+            <li><span>Install Note</span><strong>Download ke baad "Install anyway" dabayein</strong></li>
+          </ul>
+          <a href="${apkUrl}" download="Handa-Studios-By-Arman.apk" class="modal-cta">⬇ Download APK Now</a>
+        </div>`;
+      studioModal.classList.add('active');
+    }
   </script>
 
 </body>

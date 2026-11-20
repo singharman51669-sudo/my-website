@@ -3,571 +3,578 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Handa Studios | 3D Cinema & VFX Vault</title>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <title>VAULT | Handa Studios 3D Video Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     }
 
     body {
-      background-color: #050811;
-      color: #f8fafc;
+      background-color: #e4e4e7;
+      color: #141416;
       min-height: 100vh;
       overflow-x: hidden;
+      transition: background-color 0.35s ease, color 0.35s ease;
+      background-image:
+        linear-gradient(to right, rgba(0, 0, 0, 0.045) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.045) 1px, transparent 1px);
+      background-size: 120px 120px;
     }
 
-    /* Ambient Top Glow */
-    .ambient-glow {
-      position: fixed;
-      top: -20%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 900px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(56, 189, 248, 0.16) 0%, rgba(139, 92, 246, 0.08) 45%, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* Top Navigation Bar */
-    .navbar {
+    .vault-nav {
       position: sticky;
       top: 0;
-      z-index: 50;
-      background: rgba(5, 8, 17, 0.82);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 16px 32px;
+      z-index: 100;
+      background: rgba(228, 228, 231, 0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      padding: 14px 36px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 16px;
     }
 
     .nav-left {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 18px;
     }
 
-    .back-btn {
-      background: rgba(255, 255, 255, 0.07);
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      color: #e2e8f0;
+    .back-link, .brand-title, .nav-btn {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      font-weight: 700;
       text-decoration: none;
-      padding: 8px 16px;
-      border-radius: 10px;
-      font-size: 13px;
-      font-weight: 600;
-      transition: 0.2s;
-    }
-    .back-btn:hover {
-      border-color: #38bdf8;
-      color: #38bdf8;
+      color: #141416;
+      background: transparent;
+      border: 1px solid rgba(0, 0, 0, 0.22);
+      padding: 7px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.2s ease;
     }
 
-    .brand {
+    .back-link:hover, .nav-btn:hover {
+      background: #141416;
+      color: #ffffff;
+    }
+
+    .brand-title {
+      border: none;
+      padding: 0;
       font-size: 18px;
       font-weight: 800;
-      letter-spacing: 0.8px;
+      letter-spacing: -0.5px;
     }
-    .brand span { color: #38bdf8; }
 
-    .system-status {
+    .status-pill {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
-      color: #38bdf8;
-      background: rgba(56, 189, 248, 0.1);
-      border: 1px solid rgba(56, 189, 248, 0.25);
+      font-size: 10.5px;
+      font-weight: 700;
+      color: #7c3aed;
+      background: rgba(124, 58, 237, 0.12);
       padding: 6px 12px;
       border-radius: 999px;
     }
 
-    /* Main Container */
     .container {
-      max-width: 1240px;
+      max-width: 1280px;
       margin: 0 auto;
-      padding: 36px 24px 80px;
-      position: relative;
-      z-index: 1;
+      padding: 28px 36px 80px;
     }
 
-    /* Featured Cinema Showcase Banner */
-    .featured-hero {
-      position: relative;
-      border-radius: 24px;
-      overflow: hidden;
-      border: 1px solid rgba(56, 189, 248, 0.3);
-      background: linear-gradient(90deg, #090e1d 35%, rgba(9, 14, 29, 0.55) 70%, rgba(9, 14, 29, 0.2) 100%),
-                  url('bg.png') no-repeat right center / cover;
-      padding: 48px;
-      margin-bottom: 44px;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65);
-    }
-
-    .featured-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+    .sub-meta {
+      display: flex;
+      justify-content: space-between;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 11.5px;
-      font-weight: 700;
-      color: #38bdf8;
-      background: rgba(56, 189, 248, 0.12);
-      border: 1px solid rgba(56, 189, 248, 0.35);
-      padding: 5px 12px;
-      border-radius: 6px;
-      margin-bottom: 16px;
-    }
-
-    .featured-hero h1 {
-      font-size: clamp(28px, 4vw, 44px);
-      font-weight: 800;
-      line-height: 1.12;
-      margin-bottom: 12px;
-      max-width: 560px;
-    }
-
-    .featured-hero p {
-      color: #cbd5e1;
-      font-size: 15px;
-      line-height: 1.6;
-      max-width: 520px;
+      font-size: 10.5px;
+      color: #71717a;
       margin-bottom: 24px;
     }
 
-    .tech-specs {
+    .featured-stage {
+      perspective: 1300px;
+      margin-bottom: 54px;
+    }
+
+    .featured-card {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      background: #12121a;
+      color: #ffffff;
+      border: 1px solid rgba(124, 58, 237, 0.35);
+      box-shadow: -18px 28px 60px rgba(15, 23, 42, 0.22);
+      transform: rotateX(6deg) rotateY(-4deg);
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+    }
+
+    .featured-card:hover {
+      transform: rotateX(0deg) rotateY(0deg) translateY(-4px);
+      box-shadow: 0 24px 65px rgba(124, 58, 237, 0.32);
+    }
+
+    .featured-bg {
+      width: 100%;
+      height: 360px;
+      object-fit: cover;
+      opacity: 0.45;
+      display: block;
+    }
+
+    .featured-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(9, 9, 13, 0.92) 0%, rgba(9, 9, 13, 0.65) 60%, rgba(9, 9, 13, 0.25) 100%);
+      padding: 36px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .featured-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      color: #c084fc;
+      background: rgba(168, 85, 247, 0.16);
+      border: 1px solid rgba(168, 85, 247, 0.35);
+      padding: 5px 12px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+
+    .featured-overlay h1 {
+      font-size: clamp(26px, 3.8vw, 42px);
+      font-weight: 800;
+      letter-spacing: -1.2px;
+      margin-bottom: 10px;
+    }
+
+    .featured-overlay p {
+      max-width: 540px;
+      font-size: 14px;
+      line-height: 1.55;
+      color: #d4d4d8;
+      margin-bottom: 18px;
+    }
+
+    .specs-row {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-bottom: 28px;
-    }
-
-    .tech-specs span {
+      margin-bottom: 22px;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 11.5px;
-      color: #94a3b8;
-      background: rgba(15, 23, 42, 0.85);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 5px 11px;
-      border-radius: 6px;
+      font-size: 10.5px;
     }
 
-    .play-featured-btn {
-      background: linear-gradient(90deg, #0ea5e9, #6366f1);
+    .specs-row span {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      padding: 6px 11px;
+      border-radius: 6px;
+      color: #e4e4e7;
+    }
+
+    .play-pill-btn {
+      background: linear-gradient(135deg, #7c3aed, #a855f7);
       color: #ffffff;
       border: none;
-      padding: 14px 28px;
-      border-radius: 12px;
-      font-size: 15px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
       font-weight: 700;
+      padding: 12px 24px;
+      border-radius: 999px;
       cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      box-shadow: 0 10px 25px rgba(14, 165, 233, 0.35);
-      transition: 0.2s;
-    }
-    .play-featured-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 14px 30px rgba(14, 165, 233, 0.5);
+      box-shadow: 0 12px 28px rgba(124, 58, 237, 0.45);
+      transition: transform 0.2s ease;
     }
 
-    /* Filter Bar */
-    .filter-header {
+    .play-pill-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .archive-top {
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
       gap: 16px;
-      margin-bottom: 28px;
+      margin-bottom: 24px;
     }
 
-    .filter-header h2 {
-      font-size: 22px;
+    .archive-top h2 {
+      font-size: 24px;
       font-weight: 800;
+      letter-spacing: -0.6px;
     }
 
-    .filter-tabs {
+    .filter-group {
       display: flex;
-      gap: 10px;
+      gap: 8px;
       flex-wrap: wrap;
     }
 
-    .tab-btn {
-      background: #0d1323;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: #94a3b8;
-      padding: 8px 16px;
-      border-radius: 10px;
-      font-size: 13px;
-      font-weight: 600;
+    .filter-btn {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      background: transparent;
+      color: #3f3f46;
       cursor: pointer;
-      transition: 0.2s;
+      transition: 0.2s ease;
     }
-    .tab-btn.active, .tab-btn:hover {
-      background: rgba(56, 189, 248, 0.15);
-      border-color: #38bdf8;
+
+    .filter-btn.active, .filter-btn:hover {
+      background: #7c3aed;
+      border-color: #7c3aed;
       color: #ffffff;
     }
 
-    /* Clean 3-Column Video Grid */
     .video-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-      gap: 26px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      perspective: 1200px;
     }
 
-    .video-card {
-      background: #0b101e;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+    .v-card {
+      background: #f8fafc;
+      border: 1px solid rgba(0, 0, 0, 0.08);
       border-radius: 18px;
       overflow: hidden;
-      transition: all 0.3s ease;
       cursor: pointer;
-      display: flex;
-      flex-direction: column;
+      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.08);
+      opacity: 0;
+      transform: translate3d(0, -70px, 90px) rotateX(14deg);
+      transition:
+        transform 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.6s ease,
+        box-shadow 0.25s ease;
     }
 
-    .video-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(56, 189, 248, 0.5);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(56, 189, 248, 0.12);
+    .v-card.visible {
+      opacity: 1;
+      transform: translate3d(0, 0, 0) rotateX(0deg);
     }
 
-    .thumb-box {
+    .v-card.visible:hover {
+      transform: translateY(-7px) scale(1.015);
+      box-shadow: 0 22px 44px rgba(124, 58, 237, 0.22);
+    }
+
+    .v-thumb {
       position: relative;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      background: #111827;
+      height: 190px;
       overflow: hidden;
+      background: #0f172a;
     }
 
-    .thumb-box img {
+    .v-thumb img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.4s ease;
-    }
-    .video-card:hover .thumb-box img {
-      transform: scale(1.06);
+      display: block;
     }
 
-    .duration-badge {
+    .v-tag-badge {
       position: absolute;
       bottom: 10px;
       right: 10px;
-      background: rgba(5, 8, 17, 0.85);
       font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 700;
-      padding: 4px 8px;
+      padding: 4px 9px;
       border-radius: 6px;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-    }
-
-    .play-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(5, 8, 17, 0.4);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transition: 0.25s;
-    }
-    .video-card:hover .play-overlay {
-      opacity: 1;
-    }
-
-    .play-circle {
-      width: 54px;
-      height: 54px;
-      border-radius: 50%;
-      background: #38bdf8;
-      color: #050811;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      font-weight: 800;
-      box-shadow: 0 0 25px rgba(56, 189, 248, 0.7);
-    }
-
-    .card-body {
-      padding: 20px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .card-meta {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      color: #38bdf8;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      margin-bottom: 6px;
-    }
-
-    .card-body h3 {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 8px;
+      background: rgba(9, 9, 13, 0.85);
       color: #ffffff;
     }
 
-    .card-body p {
-      font-size: 13.5px;
-      color: #94a3b8;
-      line-height: 1.5;
-      margin-bottom: 18px;
+    .v-body {
+      padding: 16px 18px 18px;
     }
 
-    .card-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-top: 14px;
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
-      font-size: 12px;
-      color: #64748b;
-    }
-
-    .watch-link {
-      color: #38bdf8;
+    .v-meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: #7c3aed;
       font-weight: 700;
+      margin-bottom: 6px;
     }
 
-    /* Fullscreen Cinema Theater Modal */
+    .v-body h3 {
+      font-size: 16px;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .v-body p {
+      font-size: 12.5px;
+      color: #52525b;
+      line-height: 1.45;
+    }
+
     .cinema-modal {
       position: fixed;
       inset: 0;
-      background: rgba(2, 4, 10, 0.92);
-      backdrop-filter: blur(20px);
-      z-index: 999;
+      background: rgba(5, 5, 12, 0.88);
+      backdrop-filter: blur(14px);
+      z-index: 9999;
       display: none;
       align-items: center;
       justify-content: center;
       padding: 20px;
     }
-    .cinema-modal.open {
+
+    .cinema-modal.active {
       display: flex;
     }
 
-    .modal-content {
+    .cinema-box {
       width: 100%;
-      max-width: 960px;
-      background: #0b101e;
-      border: 1px solid rgba(56, 189, 248, 0.35);
-      border-radius: 20px;
+      max-width: 820px;
+      background: #12121c;
+      color: #ffffff;
+      border: 1px solid rgba(168, 85, 247, 0.45);
+      border-radius: 18px;
       overflow: hidden;
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85);
     }
 
-    .modal-top {
+    .cinema-bar {
       padding: 14px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
     }
 
-    .modal-top h4 {
-      font-size: 15px;
-      font-weight: 700;
-    }
-
-    .close-btn {
-      background: rgba(255, 255, 255, 0.1);
+    .cinema-bar button {
+      background: rgba(255, 255, 255, 0.12);
       border: none;
-      color: #fff;
+      color: #ffffff;
       padding: 6px 14px;
-      border-radius: 8px;
-      font-weight: 700;
+      border-radius: 6px;
       cursor: pointer;
-    }
-    .close-btn:hover { background: #ef4444; }
-
-    video {
-      width: 100%;
-      max-height: 72vh;
-      background: #000;
-      display: block;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
     }
 
-    @media (max-width: 768px) {
-      .featured-hero { padding: 28px 20px; }
-      .system-status { display: none; }
-      .navbar { padding: 14px 18px; }
+    .cinema-bar button:hover {
+      background: #ef4444;
+    }
+
+    body.dark-mode {
+      background-color: #09090d;
+      color: #f4f4f5;
+      background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    }
+
+    body.dark-mode .vault-nav {
+      background: rgba(9, 9, 13, 0.88);
+      border-bottom-color: rgba(255, 255, 255, 0.08);
+    }
+
+    body.dark-mode .back-link,
+    body.dark-mode .brand-title,
+    body.dark-mode .nav-btn {
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    body.dark-mode .back-link:hover,
+    body.dark-mode .nav-btn:hover {
+      background: #ffffff;
+      color: #09090d;
+    }
+
+    body.dark-mode .filter-btn {
+      color: #a1a1aa;
+      border-color: rgba(255, 255, 255, 0.18);
+    }
+
+    body.dark-mode .v-card {
+      background: #12121a;
+      border-color: rgba(255, 255, 255, 0.09);
+    }
+
+    body.dark-mode .v-body p {
+      color: #a1a1aa;
+    }
+
+    @media (max-width: 900px) {
+      .video-grid { grid-template-columns: 1fr; }
+      .featured-bg { height: 320px; }
+      .featured-overlay { padding: 22px; }
+      .vault-nav { padding: 12px 16px; }
+      .container { padding: 20px 16px 60px; }
     }
   </style>
 </head>
 <body>
 
-  <div class="ambient-glow"></div>
-
-  <!-- Top Navigation -->
-  <nav class="navbar">
+  <nav class="vault-nav">
     <div class="nav-left">
-      <a href="index.html" class="back-btn">← Home</a>
-      <div class="brand">⚡ HANDA<span>STUDIOS</span></div>
+      <a href="index.html" class="back-link">← HOME</a>
+      <span class="brand-title">HANDA STUDIOS</span>
     </div>
-    <div class="system-status">● BLENDER 3D VAULT • ONLINE</div>
+    <span class="status-pill">● BLENDER 3D VAULT // ONLINE</span>
+    <button id="vaultThemeBtn" class="nav-btn" onclick="toggleVaultTheme()">[ ☾ DARK ]</button>
   </nav>
 
-  <div class="container">
+  <main class="container">
+    <div class="sub-meta">
+      <span>002 // RENDER VAULT</span>
+      <span>CYCLES • VOLUMETRICS • PYTHON</span>
+      <span>ARMAN SINGH HANDA</span>
+    </div>
 
-    <!-- Featured Blender Render Hero -->
-    <section class="featured-hero">
-      <div class="featured-tag">🔱 FEATURED 3D RENDER • BLENDER & PYTHON</div>
-      <h1>Shiva 3D Cinematic VFX</h1>
-      <p>Created from scratch by Arman Singh Handa — featuring volumetric mountain fog, glowing cyan eyes, fire simulation, and 7 chakra energy VFX.</p>
-      
-      <div class="tech-specs">
-        <span>ENGINE: BLENDER 3D</span>
-        <span>VFX: VOLUMETRICS & FIRE</span>
-        <span>DURATION: 00:44</span>
-        <span>CREATOR: ARMAN SINGH HANDA</span>
+    <div class="featured-stage">
+      <div class="featured-card">
+        <img src="bg.png" alt="Shiva 3D Cinematic VFX" class="featured-bg" />
+        <div class="featured-overlay">
+          <span class="featured-badge">✦ FEATURED 3D RENDER • BLENDER & PYTHON</span>
+          <h1>Shiva 3D Cinematic VFX</h1>
+          <p>Crafted from scratch by Arman Singh Handa — featuring volumetric mountain fog, glowing energy eyes, fire simulation, and cinematic lighting.</p>
+          <div class="specs-row">
+            <span>ENGINE: BLENDER 3D</span>
+            <span>VFX: VOLUMETRICS & FIRE</span>
+            <span>DURATION: 00:44</span>
+            <span>CREATOR: ARMAN SINGH HANDA</span>
+          </div>
+          <button class="play-pill-btn" onclick="openCinema('video1.mp4', 'Shiva 3D Cinematic VFX — Arman Singh Handa')">▶ Watch in Cinema Mode</button>
+        </div>
       </div>
+    </div>
 
-      <!-- Yahan apni video file ka exact naam daalein (jaise video1.mp4) -->
-      <button class="play-featured-btn" onclick="openPlayer('video1.mp4', 'Shiva 3D Cinematic VFX — Made by Arman')">
-        ▶ Watch in Cinema Mode
-      </button>
-    </section>
-
-    <!-- Filter Bar -->
-    <div class="filter-header">
+    <div class="archive-top">
       <h2>3D Renders & VFX Archive</h2>
-      <div class="filter-tabs">
-        <button class="tab-btn active" onclick="filterVideos('all', this)">All Renders</button>
-        <button class="tab-btn" onclick="filterVideos('vfx', this)">3D VFX</button>
-        <button class="tab-btn" onclick="filterVideos('upcoming', this)">In Production</button>
+      <div class="filter-group">
+        <button class="filter-btn active" onclick="filterCards('all', this)">All Renders</button>
+        <button class="filter-btn" onclick="filterCards('vfx', this)">3D VFX</button>
+        <button class="filter-btn" onclick="filterCards('wip', this)">In Production</button>
       </div>
     </div>
 
-    <!-- Clean Video Grid -->
-    <div class="video-grid">
+    <div class="video-grid" id="videoGrid">
 
-      <!-- Card 1: Main Blender Video -->
-      <div class="video-card" data-category="vfx" onclick="openPlayer('video1.mp4', 'Shiva 3D Cinematic VFX — Made by Arman')">
-        <div class="thumb-box">
-          <!-- Thumbnail ke liye bg.png use kiya hai -->
-          <img src="bg.png" alt="Shiva 3D VFX" />
-          <div class="play-overlay"><div class="play-circle">▶</div></div>
-          <span class="duration-badge">00:44</span>
+      <div class="v-card" data-cat="vfx" onclick="openCinema('video1.mp4', 'Shiva 3D Cinematic VFX')">
+        <div class="v-thumb">
+          <img src="bg.png" alt="Shiva 3D Cinematic VFX" />
+          <span class="v-tag-badge">00:44</span>
         </div>
-        <div class="card-body">
-          <div>
-            <div class="card-meta">BLENDER 3D • VOLUMETRIC VFX</div>
-            <h3>Shiva 3D Cinematic VFX</h3>
-            <p>Full 3D scene rendered with custom lighting, Trishul simulation, and atmospheric fog effects.</p>
-          </div>
-          <div class="card-footer">
-            <span>Handa Studios Original</span>
-            <span class="watch-link">Play Render →</span>
-          </div>
+        <div class="v-body">
+          <div class="v-meta">BLENDER 3D • VOLUMETRIC VFX</div>
+          <h3>Shiva 3D Cinematic VFX</h3>
+          <p>Mythological mountain atmosphere, glow shader, and custom render.</p>
         </div>
       </div>
 
-      <!-- Card 2: Next Blender Project (Placeholder) -->
-      <div class="video-card" data-category="upcoming" onclick="alert('🚧 Yeh 3D scene abhi Blender mein render ho raha hai! Bahut jald live hoga.')">
-        <div class="thumb-box">
-          <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80" alt="3D Environment" />
-          <div class="play-overlay"><div class="play-circle">⏳</div></div>
-          <span class="duration-badge">RENDERING</span>
+      <div class="v-card" data-cat="wip" onclick="openWipInfo('Cyberpunk Temple 3D Scene')">
+        <div class="v-thumb" style="background: linear-gradient(135deg, #6366f1, #ec4899);">
+          <span class="v-tag-badge">RENDERING</span>
         </div>
-        <div class="card-body">
-          <div>
-            <div class="card-meta">BLENDER 3D • ENVIRONMENT</div>
-            <h3>Cyberpunk Temple 3D Scene</h3>
-            <p>Next-gen neon lighting, procedural shaders, and camera tracking test in Blender.</p>
-          </div>
-          <div class="card-footer">
-            <span>Status: Rendering...</span>
-            <span class="watch-link">In Production</span>
-          </div>
+        <div class="v-body">
+          <div class="v-meta">BLENDER 3D • ENVIRONMENT</div>
+          <h3>Cyberpunk Temple 3D Scene</h3>
+          <p>Neon reflections, volumetric haze, and sci-fi architectural lighting.</p>
         </div>
       </div>
 
-      <!-- Card 3: Python + Blender Automation -->
-      <div class="video-card" data-category="upcoming" onclick="alert('🚧 Python + Blender Scripting showcase jald aa raha hai!')">
-        <div class="thumb-box">
-          <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80" alt="Python 3D" />
-          <div class="play-overlay"><div class="play-circle">⏳</div></div>
-          <span class="duration-badge">COMING SOON</span>
+      <div class="v-card" data-cat="wip" onclick="openWipInfo('Python Procedural VFX Test')">
+        <div class="v-thumb" style="background: linear-gradient(135deg, #0f172a, #be185d);">
+          <span class="v-tag-badge">COMING SOON</span>
         </div>
-        <div class="card-body">
-          <div>
-            <div class="card-meta">PYTHON • PROCEDURAL 3D</div>
-            <h3>Python Procedural VFX Test</h3>
-            <p>Generating 3D geometric patterns and particle simulations using Python scripting.</p>
-          </div>
-          <div class="card-footer">
-            <span>Status: In Progress</span>
-            <span class="watch-link">Coming Soon</span>
-          </div>
+        <div class="v-body">
+          <div class="v-meta">PYTHON • PROCEDURAL 3D</div>
+          <h3>Python Procedural VFX Test</h3>
+          <p>Automated Blender geometry & shader experiments by Arman.</p>
         </div>
       </div>
 
     </div>
-  </div>
+  </main>
 
-  <!-- Cinema Theater Modal Player -->
-  <div class="cinema-modal" id="cinemaModal" onclick="closeOnOutside(event)">
-    <div class="modal-content">
-      <div class="modal-top">
-        <h4 id="modalTitle">Now Playing</h4>
-        <button class="close-btn" onclick="closePlayer()">✕ Close (ESC)</button>
+  <div class="cinema-modal" id="cinemaModal" onclick="if(event.target===this) closeCinema()">
+    <div class="cinema-box">
+      <div class="cinema-bar">
+        <span id="cinemaTitle">HANDA STUDIOS // CINEMA</span>
+        <button onclick="closeCinema()">✕ CLOSE</button>
       </div>
-      <video id="cinemaVideo" controls playsinline></video>
+      <div id="cinemaBody"></div>
     </div>
   </div>
 
   <script>
-    const modal = document.getElementById('cinemaModal');
-    const video = document.getElementById('cinemaVideo');
-    const title = document.getElementById('modalTitle');
-
-    function openPlayer(src, videoTitle) {
-      title.textContent = videoTitle;
-      video.src = src;
-      modal.classList.add('open');
-      video.play();
+    const vaultThemeBtn = document.getElementById('vaultThemeBtn');
+    if (localStorage.getItem('handa-theme') === 'dark') {
+      document.body.classList.add('dark-mode');
+      vaultThemeBtn.textContent = '[ ☀ LIGHT ]';
     }
 
-    function closePlayer() {
-      video.pause();
-      video.src = "";
-      modal.classList.remove('open');
+    function toggleVaultTheme() {
+      document.body.classList.toggle('dark-mode');
+      const isDark = document.body.classList.contains('dark-mode');
+      vaultThemeBtn.textContent = isDark ? '[ ☀ LIGHT ]' : '[ ☾ DARK ]';
+      localStorage.setItem('handa-theme', isDark ? 'dark' : 'light');
     }
 
-    function closeOnOutside(e) {
-      if (e.target === modal) closePlayer();
+    const vCards = document.querySelectorAll('.v-card');
+    vCards.forEach((card, idx) => {
+      setTimeout(() => {
+        card.classList.add('visible');
+      }, 150 + idx * 140);
+    });
+
+    function filterCards(cat, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      vCards.forEach(card => {
+        const match = cat === 'all' || card.dataset.cat === cat;
+        card.style.display = match ? 'block' : 'none';
+      });
+    }
+
+    const cinemaModal = document.getElementById('cinemaModal');
+    const cinemaTitle = document.getElementById('cinemaTitle');
+    const cinemaBody = document.getElementById('cinemaBody');
+
+    function openCinema(src, title) {
+      cinemaTitle.textContent = title;
+      cinemaBody.innerHTML = `<video src="${src}" controls autoplay style="width:100%; max-height:72vh; display:block; background:#000;"></video>`;
+      cinemaModal.classList.add('active');
+    }
+
+    function openWipInfo(projectName) {
+      cinemaTitle.textContent = 'IN PRODUCTION // HANDA STUDIOS';
+      cinemaBody.innerHTML = `
+        <div style="padding:28px;">
+          <h3 style="font-size:20px; margin-bottom:10px;">🎬 ${projectName}</h3>
+          <p style="color:#a1a1aa; font-size:14px; line-height:1.6;">Yeh project abhi Blender mein under production hai. Jaldi hi iska final render is vault mein upload kiya jayega.</p>
+        </div>`;
+      cinemaModal.classList.add('active');
+    }
+
+    function closeCinema() {
+      cinemaBody.innerHTML = '';
+      cinemaModal.classList.remove('active');
     }
 
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closePlayer();
+      if (e.key === 'Escape') closeCinema();
     });
-
-    function filterVideos(category, btn) {
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      document.querySelectorAll('.video-card').forEach(card => {
-        if (category === 'all' || card.dataset.category === category) {
-          card.style.display = 'flex';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    }
   </script>
-
 </body>
 </html>
