@@ -234,27 +234,24 @@
       e.preventDefault();
       deferredPrompt = e;
     });
-
+ // G. Direct APK Download Logic for [ 📲 GET APP ] Button
+// G. Direct APK Download Logic for [ 📲 GET APP ] Button
     function installHandaApp() {
-      if (deferredPrompt) {
-        deferredPrompt.prompt();
-        deferredPrompt.userChoice.then(() => {
-          deferredPrompt = null;
-        });
-      } else {
-        modalHeading.textContent = 'INSTALL HANDA STUDIOS APP // MOBILE & PC';
-        modalBody.innerHTML = `
-          <div class="spec-popup">
-            <h3>📲 Install Handa 3D Studio App</h3>
-            <ul>
-              <li><span>Android (Chrome)</span><strong>Menu (⋮) → "Add to Home Screen" / "Install App"</strong></li>
-              <li><span>iPhone (Safari)</span><strong>Share Icon (↑) → "Add to Home Screen"</strong></li>
-              <li><span>Windows PC</span><strong>Address Bar ke right mein Install Icon (⊕) dabayein</strong></li>
-            </ul>
-            <button onclick="closeStudioModal()" class="modal-cta" style="border:none; cursor:pointer;">Got It ✓</button>
-          </div>`;
-        studioModal.classList.add('active');
-      }
+      const apkUrl = 'handa-studios.apk'; // Agar Google Drive/Release link ho toh yahan paste karein
+      const apkVersion = 'v1.0 • Android APK';
+
+      modalHeading.textContent = 'HANDA STUDIOS BY ARMAN // ANDROID APK';
+      modalBody.innerHTML = `
+        <div class="spec-popup">
+          <h3>📲 Download Handa Studios App</h3>
+          <ul>
+            <li><span>App Name</span><strong>Handa Studios By arman</strong></li>
+            <li><span>Package Format</span><strong>${apkVersion}</strong></li>
+            <li><span>Install Note</span><strong>Download ke baad "Install anyway" / "Allow from this source" dabayein</strong></li>
+          </ul>
+          <a href="${apkUrl}" download="Handa-Studios-By-Arman.apk" class="modal-cta">⬇ Download APK Now</a>
+        </div>`;
+      studioModal.classList.add('active');
     }
     // =========================================================
     // F. ULTRA-PRO PRELOADER, WEB AUDIO SFX, CURSOR & SLIDER
