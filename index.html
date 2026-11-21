@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HANDA | 3D Blender & VFX Studio</title>
-  <link rel="stylesheet" href="style.css?v=5" />
+  <link rel="stylesheet" href="style.css?v=6" />
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#7c3aed" />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- ULTRA-PRO STUDIO BOOT PRELOADER -->
+  <!-- 0. FAIL-SAFE STUDIO BOOT PRELOADER -->
   <div class="studio-loader" id="studioLoader">
     <div class="loader-inner">
       <span class="loader-tag">HANDA OS // 3D VFX ENGINE v4.0</span>
@@ -203,7 +203,45 @@
     </div>
   </section>
 
-  <!-- 4. MINIMAL STUDIO FOOTER -->
+  <!-- 4. 3D TILTED SHOWCASE CARDS -->
+  <section class="peach-3d-showcase" id="peachShowcase">
+    <div class="peach-top-row">
+      <div>
+        <span class="mono-label" style="color:#c084fc;">004 // 3D INTERACTIVE SHOWCASE</span>
+        <h2>LAUNCH YOUR 3D<br>VISUAL WORLD.</h2>
+      </div>
+      <p>Tilted 3D studio cards crafted for your Blender renders, VFX reels, and vault.</p>
+    </div>
+
+    <div class="peach-cards-fan">
+      <div class="p-3d-card" onclick="openHomePlayer('video1.mp4', 'Shiva 3D Cinematic VFX — Arman Singh Handa')">
+        <img src="bg.png" alt="Shiva 3D Render" class="p-card-img" />
+        <span class="p-pill">3D CINEMATIC</span>
+        <h3>Shiva 3D VFX Reel</h3>
+        <p>Volumetric fog, glowing eyes, and fire simulation rendered in Blender.</p>
+      </div>
+
+      <div class="p-3d-card" onclick="openSpecModal('vfx')">
+        <div class="p-card-img" style="background: linear-gradient(135deg, #4f46e5, #ec4899); display:flex; align-items:center; justify-content:center; font-family:'JetBrains Mono', monospace; font-weight:700;">
+          CYCLES • SHADERS
+        </div>
+        <span class="p-pill">PIPELINE</span>
+        <h3>Lighting & Atmosphere</h3>
+        <p>Depth fog, mist pass, and procedural shader nodes in action.</p>
+      </div>
+
+      <div class="p-3d-card" onclick="window.location.href='library.html'">
+        <div class="p-card-img" style="background: linear-gradient(135deg, #0ea5e9, #7c3aed); display:flex; align-items:center; justify-content:center; font-family:'JetBrains Mono', monospace; font-weight:700;">
+          VAULT // ARCHIVE
+        </div>
+        <span class="p-pill">FULL LIBRARY</span>
+        <h3>Explore All Renders</h3>
+        <p>Open the complete 3D video library and watch renders in cinema mode.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. MINIMAL STUDIO FOOTER -->
   <footer class="studio-footer" id="connect">
     <div class="footer-inner">
       <div class="brand">HANDA STUDIOS</div>
@@ -216,7 +254,7 @@
     </div>
   </footer>
 
-  <!-- 5. CENTER SCREEN CINEMA & SPECS POPUP MODAL -->
+  <!-- 6. CENTER SCREEN CINEMA & SPECS POPUP MODAL -->
   <div class="studio-modal" id="studioModal" onclick="if(event.target===this) closeStudioModal()">
     <div class="studio-modal-box">
       <div class="modal-bar">
@@ -227,7 +265,7 @@
     </div>
   </div>
 
-  <!-- 6. ALL-IN-ONE INTERACTIVE ENGINE -->
+  <!-- 7. ALL-IN-ONE INTERACTIVE ENGINE -->
   <script>
     // A. Dark / Light Mode Toggle
     const themeBtn = document.getElementById('themeBtn');
@@ -412,51 +450,79 @@
       if (e.key === 'Escape') closeStudioModal();
     });
 
-    // E. Studio Boot Preloader
+    // E. Fail-Safe Studio Boot Preloader (Never gets stuck at 00%!)
     let loadPct = 0;
     const loaderEl = document.getElementById('studioLoader');
     const loaderCount = document.getElementById('loaderCount');
     const loaderFill = document.getElementById('loaderFill');
 
-    const bootInterval = setInterval(() => {
-      loadPct += Math.floor(Math.random() * 18) + 12;
-      if (loadPct >= 100) {
-        loadPct = 100;
-        clearInterval(bootInterval);
-        setTimeout(() => loaderEl.classList.add('done'), 220);
+    function finishLoader() {
+      if (loaderEl && !loaderEl.classList.contains('done')) {
+        if (loaderCount) loaderCount.textContent = '100%';
+        if (loaderFill) loaderFill.style.width = '100%';
+        setTimeout(() => loaderEl.classList.add('done'), 180);
       }
-      loaderCount.textContent = (loadPct < 10 ? '0' + loadPct : loadPct) + '%';
-      loaderFill.style.width = loadPct + '%';
-    }, 65);
+    }
 
-    // F. Web Audio Sci-Fi Sound Engine
+    const bootInterval = setInterval(() => {
+      loadPct += 20;
+      if (loaderCount) loaderCount.textContent = (loadPct < 10 ? '0' + loadPct : loadPct) + '%';
+      if (loaderFill) loaderFill.style.width = Math.min(loadPct, 100) + '%';
+      if (loadPct >= 100) {
+        clearInterval(bootInterval);
+        finishLoader();
+      }
+    }, 70);
+
+    window.addEventListener('load', () => setTimeout(finishLoader, 250));
+    setTimeout(finishLoader, 1300);
+
+    // F. Safe Web Audio Sci-Fi Sound Engine
     let sfxEnabled = true;
     const sfxBtn = document.getElementById('sfxBtn');
-    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    let audioCtx = null;
+
+    function getAudioCtx() {
+      try {
+        if (!audioCtx) {
+          const Ctx = window.AudioContext || window.webkitAudioContext;
+          if (Ctx) audioCtx = new Ctx();
+        }
+        if (audioCtx && audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
+        return audioCtx;
+      } catch (e) {
+        return null;
+      }
+    }
 
     function playStudioClick(freq = 620, duration = 0.05) {
       if (!sfxEnabled) return;
-      if (audioCtx.state === 'suspended') audioCtx.resume();
-      const osc = audioCtx.createOscillator();
-      const gain = audioCtx.createGain();
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(140, audioCtx.currentTime + duration);
-      gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
-      osc.connect(gain);
-      gain.connect(audioCtx.destination);
-      osc.start();
-      osc.stop(audioCtx.currentTime + duration);
+      try {
+        const ctx = getAudioCtx();
+        if (!ctx) return;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(140, ctx.currentTime + duration);
+        gain.gain.setValueAtTime(0.06, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + duration);
+      } catch (e) {}
     }
 
     function toggleSfx() {
       sfxEnabled = !sfxEnabled;
-      sfxBtn.textContent = sfxEnabled ? '[ 🔊 SFX ]' : '[ 🔇 MUTE ]';
+      if (sfxBtn) sfxBtn.textContent = sfxEnabled ? '[ 🔊 SFX ]' : '[ 🔇 MUTE ]';
       if (sfxEnabled) playStudioClick(880, 0.08);
     }
 
-    document.querySelectorAll('a, button, .t-card').forEach(el => {
+    document.querySelectorAll('a, button, .t-card, .p-3d-card').forEach(el => {
       el.addEventListener('mouseenter', () => playStudioClick(520, 0.035));
       el.addEventListener('click', () => playStudioClick(840, 0.07));
     });
@@ -464,7 +530,7 @@
     // G. Custom Magnetic Studio Cursor
     const cursor = document.getElementById('studioCursor');
     window.addEventListener('mousemove', (e) => {
-      cursor.style.transform = `translate3d(${e.clientX - 14}px, ${e.clientY - 14}px, 0)`;
+      if (cursor) cursor.style.transform = `translate3d(${e.clientX - 14}px, ${e.clientY - 14}px, 0)`;
     });
 
     // H. Blender Wireframe vs Final VFX Slider
@@ -473,6 +539,7 @@
     const compareHandle = document.getElementById('compareHandle');
 
     function moveCompare(clientX) {
+      if (!compareBox || !compareBefore || !compareHandle) return;
       const rect = compareBox.getBoundingClientRect();
       let pos = ((clientX - rect.left) / rect.width) * 100;
       pos = clamp(pos, 4, 96);
@@ -480,8 +547,12 @@
       compareHandle.style.left = pos + '%';
     }
 
-    compareBox.addEventListener('mousemove', (e) => moveCompare(e.clientX));
-    compareBox.addEventListener('touchmove', (e) => moveCompare(e.touches[0].clientX));
+    if (compareBox) {
+      compareBox.addEventListener('mousemove', (e) => moveCompare(e.clientX));
+      compareBox.addEventListener('touchmove', (e) => {
+        if (e.touches.length > 0) moveCompare(e.touches[0].clientX);
+      }, { passive: true });
+    }
 
     // I. Direct APK Download for [ 📲 GET APP ]
     function installHandaApp() {
